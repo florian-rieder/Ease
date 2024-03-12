@@ -1,4 +1,4 @@
-﻿namespace ca.HenrySoftware.Rage
+﻿namespace Easing
 {
 	public class EaserAlpha : Easer<float>
 	{

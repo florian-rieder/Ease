@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-namespace ca.HenrySoftware.Rage
+
+namespace Easing
 {
 	public class EaserColorAlpha : Easer<Color>
 	{

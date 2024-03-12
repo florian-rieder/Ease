@@ -1,8 +1,9 @@
-using ca.HenrySoftware.Rage;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Easing;
+
 [RequireComponent(typeof(AudioSource))]
 public class Intro : MonoBehaviour
 {

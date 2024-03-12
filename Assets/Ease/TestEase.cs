@@ -1,6 +1,7 @@
-﻿using ca.HenrySoftware.Rage;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Easing;
+
 public class TestEase : MonoBehaviour
 {
 	[SerializeField] private Image _slowStatus = null;

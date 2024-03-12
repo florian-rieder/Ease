@@ -24,9 +24,10 @@ public enum EaseType
 
 ## Example usage
 ```csharp
-using ca.HenrySoftware.Rage;
 using UnityEngine;
 using UnityEngine.UI;
+using Easing;
+
 public class TestEase : MonoBehaviour
 {
 	[SerializeField] private Image _slowStatus = null;
@@ -84,6 +85,7 @@ public class TestEase : MonoBehaviour
 		});
 	}
 }
+
 ```
 
 More examples about usage of behaviours in the demo scene.
@@ -295,7 +297,7 @@ Easing functions provide a convenient way to interpolate values smoothly over ti
 Easing functions are provided as static methods in the `Ease` class. To use an easing function, simply call the corresponding method and provide the required parameters:
 
 ```csharp
-using ca.HenrySoftware.Rage;
+using Easing
 
 float startValue = 0.0f;
 float endValue = 1.0f;
