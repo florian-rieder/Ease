@@ -21,6 +21,7 @@ namespace Easing
 		BounceIn, BounceOut, BounceInOut,
 		Spring
 	}
+
 	public static class Ease
 	{
 		private readonly static Dictionary<EaseType, Func<float, float, float, float>> Types = new Dictionary<EaseType, Func<float, float, float, float>>
@@ -360,6 +361,7 @@ namespace Easing
 			return from + (to - from) * time;
 		}
 	}
+
 	public static class Ease3
 	{
 		private readonly static Dictionary<EaseType, Func<Vector3, Vector3, float, Vector3>> Types = new Dictionary<EaseType, Func<Vector3, Vector3, float, Vector3>>
@@ -774,7 +776,133 @@ namespace Easing
 			if (repeat != 0 && complete != null)
 				complete();
 		}
+
+        public static Vector3 SineIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.SineIn](from, to, time);
+		}
+		public static Vector3 SineOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.SineOut](from, to, time);
+		}
+		public static Vector3 SineInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.SineInOut](from, to, time);
+		}
+		public static Vector3 QuadIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.QuadIn](from, to, time);
+		}
+		public static Vector3 QuadOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.QuadOut](from, to, time);
+		}
+		public static Vector3 QuadInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.QuadInOut](from, to, time);
+		}
+		public static Vector3 CubicIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.CubicIn](from, to, time);
+		}
+		public static Vector3 CubicOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.CubicOut](from, to, time);
+		}
+		public static Vector3 CubicInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.CubicInOut](from, to, time);
+		}
+		public static Vector3 QuartIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.QuartIn](from, to, time);
+		}
+		public static Vector3 QuartOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.QuartOut](from, to, time);
+		}
+		public static Vector3 QuartInOut(Vector3 from, Vector3 to, float time)
+		{
+            return Types[EaseType.QuartInOut](from, to, time);
+		}
+		public static Vector3 QuintIn(Vector3 from, Vector3 to, float time)
+		{
+            return Types[EaseType.QuintIn](from, to, time);
+		}
+		public static Vector3 QuintOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.QuintOut](from, to, time);
+		}
+		public static Vector3 QuintInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.QuintInOut](from, to, time);
+		}
+		public static Vector3 ExpoIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.ExpoIn](from, to, time);
+		}
+		public static Vector3 ExpoOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.ExpoOut](from, to, time);
+		}
+		public static Vector3 ExpoInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.ExpoInOut](from, to, time);
+		}
+		public static Vector3 CircIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.CircIn](from, to, time);
+		}
+		public static Vector3 CircOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.CircOut](from, to, time);
+		}
+		public static Vector3 CircInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.CircInOut](from, to, time);
+		}
+		public static Vector3 BackIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.BackIn](from, to, time);
+		}
+		public static Vector3 BackOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.BackOut](from, to, time);
+		}
+		public static Vector3 BackInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.BackInOut](from, to, time);
+		}
+		public static Vector3 ElasticIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.ElasticIn](from, to, time);
+		}
+		public static Vector3 ElasticOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.ElasticOut](from, to, time);
+		}
+		public static Vector3 ElasticInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.ElasticInOut](from, to, time);
+		}
+		public static Vector3 BounceIn(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.BounceIn](from, to, time);
+		}
+		public static Vector3 BounceOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.BounceOut](from, to, time);
+		}
+		public static Vector3 BounceInOut(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.BounceInOut](from, to, time);
+		}
+		public static Vector3 Spring(Vector3 from, Vector3 to, float time)
+		{
+			return Types[EaseType.Spring](from, to, time);
+		}
 	}
+
 	public static class Ease4
 	{
 		private readonly static Dictionary<EaseType, Func<Vector4, Vector4, float, Vector4>> Types = new Dictionary<EaseType, Func<Vector4, Vector4, float, Vector4>>

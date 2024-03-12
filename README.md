@@ -297,11 +297,12 @@ Vectors are used as parameters for the above methods instead of Color objects. T
 
 Easing functions provide a convenient way to interpolate values smoothly over time. These functions define how the intermediate values between a start and an end point are calculated based on a time factor.
 
-Easing functions are provided as static methods in the `Ease` class. To use an easing function, simply call the corresponding method and provide the required parameters:
+Easing functions are provided as static methods in the `Ease` and `Ease3` classes. To use an easing function, simply call the corresponding method and provide the `start`, `end` and `time` parameters:
 
 ```csharp
 using Easing;
 
+// Interpolating a scalar
 float startValue = 0.0f;
 float endValue = 1.0f;
 float time = 0.5f; // Progress of the interpolation, usually between 0 and 1
@@ -309,4 +310,13 @@ float time = 0.5f; // Progress of the interpolation, usually between 0 and 1
 float interpolatedValue = Ease.QuadInOut(startValue, endValue, time);
 
 Debug.Log(interpolatedValue); // Output: 0.5
+
+// Interpolating a vector
+Vector3 startVector = Vector3.zero;
+Vector3 endVector = Vector3.one;
+float time = 0.5f
+
+Vector3 interpolatedVector = Ease3.QuintInOut(startVector, endVector, time);
+
+Debug.Log(interpolatedVector); // Output: Vector3(0.5, 0.5, 0.5)
 ```
