@@ -302,7 +302,7 @@ Easing functions are provided as static methods in the `Ease` and `Ease3` classe
 ```csharp
 using Easing;
 
-// Interpolating a scalar
+// Interpolating a float
 float startValue = 0.0f;
 float endValue = 1.0f;
 float time = 0.5f; // Progress of the interpolation, usually between 0 and 1
@@ -311,7 +311,7 @@ float interpolatedValue = Ease.QuadInOut(startValue, endValue, time);
 
 Debug.Log(interpolatedValue); // Output: 0.5
 
-// Interpolating a vector
+// Interpolating a Vector3
 Vector3 startVector = Vector3.zero;
 Vector3 endVector = Vector3.one;
 float time = 0.5f
@@ -319,4 +319,15 @@ float time = 0.5f
 Vector3 interpolatedVector = Ease3.QuintInOut(startVector, endVector, time);
 
 Debug.Log(interpolatedVector); // Output: Vector3(0.5, 0.5, 0.5)
+
+// Interpolating a color
+Vector3 startColor = Color.white;
+Vector3 endColor = Color.black;
+endColor.a = 0;
+
+float time = 0.5f
+
+Vector3 interpolatedVector = Ease4.QuartInOut(startColor, endColor, time);
+
+Debug.Log(interpolatedVector); // Output: Vector4(0.5, 0.5, 0.5, 0.5)
 ```

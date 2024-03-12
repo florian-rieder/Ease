@@ -776,7 +776,6 @@ namespace Easing
 			if (repeat != 0 && complete != null)
 				complete();
 		}
-
         public static Vector3 SineIn(Vector3 from, Vector3 to, float time)
 		{
 			return Types[EaseType.SineIn](from, to, time);
@@ -1083,6 +1082,130 @@ namespace Easing
 			}
 			if (repeat != 0 && complete != null)
 				complete();
+		}
+        public static Vector4 SineIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.SineIn](from, to, time);
+		}
+		public static Vector4 SineOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.SineOut](from, to, time);
+		}
+		public static Vector4 SineInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.SineInOut](from, to, time);
+		}
+		public static Vector4 QuadIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.QuadIn](from, to, time);
+		}
+		public static Vector4 QuadOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.QuadOut](from, to, time);
+		}
+		public static Vector4 QuadInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.QuadInOut](from, to, time);
+		}
+		public static Vector4 CubicIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.CubicIn](from, to, time);
+		}
+		public static Vector4 CubicOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.CubicOut](from, to, time);
+		}
+		public static Vector4 CubicInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.CubicInOut](from, to, time);
+		}
+		public static Vector4 QuartIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.QuartIn](from, to, time);
+		}
+		public static Vector4 QuartOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.QuartOut](from, to, time);
+		}
+		public static Vector4 QuartInOut(Vector4 from, Vector4 to, float time)
+		{
+            return Types[EaseType.QuartInOut](from, to, time);
+		}
+		public static Vector4 QuintIn(Vector4 from, Vector4 to, float time)
+		{
+            return Types[EaseType.QuintIn](from, to, time);
+		}
+		public static Vector4 QuintOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.QuintOut](from, to, time);
+		}
+		public static Vector4 QuintInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.QuintInOut](from, to, time);
+		}
+		public static Vector4 ExpoIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.ExpoIn](from, to, time);
+		}
+		public static Vector4 ExpoOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.ExpoOut](from, to, time);
+		}
+		public static Vector4 ExpoInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.ExpoInOut](from, to, time);
+		}
+		public static Vector4 CircIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.CircIn](from, to, time);
+		}
+		public static Vector4 CircOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.CircOut](from, to, time);
+		}
+		public static Vector4 CircInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.CircInOut](from, to, time);
+		}
+		public static Vector4 BackIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.BackIn](from, to, time);
+		}
+		public static Vector4 BackOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.BackOut](from, to, time);
+		}
+		public static Vector4 BackInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.BackInOut](from, to, time);
+		}
+		public static Vector4 ElasticIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.ElasticIn](from, to, time);
+		}
+		public static Vector4 ElasticOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.ElasticOut](from, to, time);
+		}
+		public static Vector4 ElasticInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.ElasticInOut](from, to, time);
+		}
+		public static Vector4 BounceIn(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.BounceIn](from, to, time);
+		}
+		public static Vector4 BounceOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.BounceOut](from, to, time);
+		}
+		public static Vector4 BounceInOut(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.BounceInOut](from, to, time);
+		}
+		public static Vector4 Spring(Vector4 from, Vector4 to, float time)
+		{
+			return Types[EaseType.Spring](from, to, time);
 		}
 	}
 	public static class VectorExtensions
