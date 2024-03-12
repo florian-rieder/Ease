@@ -22,6 +22,9 @@ public enum EaseType
 }
 ```
 
+## Installation
+Download this repository as a zip, and copy the `Assets/Ease` folder to your project's `Assets` folder.
+
 ## Example usage
 ```csharp
 using UnityEngine;
