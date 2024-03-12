@@ -297,7 +297,7 @@ Easing functions provide a convenient way to interpolate values smoothly over ti
 Easing functions are provided as static methods in the `Ease` class. To use an easing function, simply call the corresponding method and provide the required parameters:
 
 ```csharp
-using Easing
+using Easing;
 
 float startValue = 0.0f;
 float endValue = 1.0f;
