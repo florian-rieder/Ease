@@ -322,8 +322,7 @@ Debug.Log(interpolatedVector); // Output: Vector3(0.5, 0.5, 0.5)
 
 // Interpolating a color
 Vector3 startColor = Color.white;
-Vector3 endColor = Color.black;
-endColor.a = 0;
+Vector3 endColor = Color.black.SetAlpha(0f);
 
 float time = 0.5f
 
