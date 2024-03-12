@@ -5,9 +5,9 @@
 		public override void Go()
 		{
 			if (By)
-				Ease.GoAlphaBy(this, Value, Time, null, Complete.Invoke, Type, Delay, Repeat, PingPong, RealTime);
+				Ease.GoAlphaBy(this, Value, Time, Type, Delay, Repeat, PingPong, RealTime, complete: Complete.Invoke);
 			else
-				Ease.GoAlphaTo(this, Value, Time, null, Complete.Invoke, Type, Delay, Repeat, PingPong, RealTime);
+				Ease.GoAlphaTo(this, Value, Time, Type, Delay, Repeat, PingPong, RealTime, complete: Complete.Invoke);
 		}
 	}
 }

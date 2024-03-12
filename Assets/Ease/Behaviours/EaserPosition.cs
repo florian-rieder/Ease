@@ -6,9 +6,9 @@ namespace ca.HenrySoftware.Rage
 		public override void Go()
 		{
 			if (By)
-				Ease3.GoPositionBy(this, Value, Time, null, Complete.Invoke, Type, Delay, Repeat, PingPong, RealTime);
+				Ease3.GoPositionBy(this, Value, Time, Type, Delay, Repeat, PingPong, RealTime, complete: Complete.Invoke);
 			else
-				Ease3.GoPositionTo(this, Value, Time, null, Complete.Invoke, Type, Delay, Repeat, PingPong, RealTime);
+				Ease3.GoPositionTo(this, Value, Time, Type, Delay, Repeat, PingPong, RealTime, complete: Complete.Invoke);
 		}
 	}
 }

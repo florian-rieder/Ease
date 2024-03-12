@@ -6,9 +6,9 @@ namespace ca.HenrySoftware.Rage
 		public override void Go()
 		{
 			if (By)
-				Ease3.GoRotationBy(this, Value, Time, null, Complete.Invoke, Type, Delay, Repeat, PingPong, RealTime);
+				Ease3.GoRotationBy(this, Value, Time, Type, Delay, Repeat, PingPong, RealTime, complete: Complete.Invoke);
 			else
-				Ease3.GoRotationTo(this, Value, Time, null, Complete.Invoke, Type, Delay, Repeat, PingPong, RealTime);
+				Ease3.GoRotationTo(this, Value, Time, Type, Delay, Repeat, PingPong, RealTime, complete: Complete.Invoke);
 		}
 	}
 }

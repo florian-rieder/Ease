@@ -29,9 +29,9 @@ public class Intro : MonoBehaviour
 				scale = newScale;
 		}
 		StartCoroutine(PlayDelayed());
-		Ease3.GoScaleTo(Henry, new Vector3(scale, scale, 1f), _timeAnimation, null, null, EaseType.BounceOut, _timeDelay);
-		Ease3.GoRotationTo(Henry, new Vector3(0f, 0f, 180f), _timeAnimation, null, null, EaseType.BounceOut, _timeDelay);
-		Ease3.GoColorTo(this, Color.black.GetVector3(), _timeAnimation, null, Fade, EaseType.BounceOut, _timeDelay);
+		Ease3.GoScaleTo(Henry, new Vector3(scale, scale, 1f), _timeAnimation, EaseType.BounceOut, _timeDelay);
+		Ease3.GoRotationTo(Henry, new Vector3(0f, 0f, 180f), _timeAnimation, EaseType.BounceOut, _timeDelay);
+		Ease3.GoColorTo(this, Color.black.GetVector3(), _timeAnimation, EaseType.BounceOut, _timeDelay, complete: Fade);
 	}
 	void Done()
 	{
@@ -44,6 +44,6 @@ public class Intro : MonoBehaviour
 	}
 	void Fade()
 	{
-		Ease.GoAlpha(Fore, 0f, 1f, _timeAnimation, null, Done, EaseType.Linear, _timeAnimation);
+		Ease.GoAlpha(Fore, 0f, 1f, _timeAnimation, EaseType.Linear, _timeAnimation, complete: Done);
 	}
 }

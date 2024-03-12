@@ -53,21 +53,21 @@ public class TestEase : MonoBehaviour
 		_fastStatus.color = _colorOff;
 		Time.timeScale = (_slow = !_slow) ? .1f : 1f;
 		_slowStatus.StopAllCoroutines();
-		Ease3.GoColorTo(_slowStatus, (_slow ? _colorOn : _colorOff).GetVector3(), _time, null, null, EaseType.SineInOut, 0f, 1, false, true);
-		Ease3.GoScaleTo(_slowStatus, _scaleTo, _time, null, () =>
+		Ease3.GoColorTo(_slowStatus, (_slow ? _colorOn : _colorOff).GetVector3(), _time, EaseType.SineInOut, 0f, 1, false, true);
+		Ease3.GoScaleTo(_slowStatus, _scaleTo, _time, EaseType.BackInOut, 0f, 1, false, true, complete: () =>
 		{
-			Ease3.GoScaleTo(_slowStatus, Vector3.one, _time, null, null, EaseType.BackInOut, 0f, 1, false, true);
-		}, EaseType.BackInOut, 0f, 1, false, true);
+			Ease3.GoScaleTo(_slowStatus, Vector3.one, _time, EaseType.BackInOut, 0f, 1, false, true);
+		});
 	}
 	public void Pause()
 	{
 		Time.timeScale = (_pause = !_pause) ? 0f : _slow ? .1f : _fast ? 2f : 1f;
 		_pauseStatus.StopAllCoroutines();
-		Ease3.GoColorTo(_pauseStatus, (_pause ? _colorOn : _colorOff).GetVector3(), _time, null, null, EaseType.SineInOut, 0f, 1, false, true);
-		Ease3.GoScaleTo(_pauseStatus, _scaleTo, _time, null, () =>
+		Ease3.GoColorTo(_pauseStatus, (_pause ? _colorOn : _colorOff).GetVector3(), _time, EaseType.SineInOut, 0f, 1, false, true);
+		Ease3.GoScaleTo(_pauseStatus, _scaleTo, _time, EaseType.BackInOut, 0f, 1, false, true, complete: () =>
 		{
-			Ease3.GoScaleTo(_pauseStatus, Vector3.one, _time, null, null, EaseType.BackInOut, 0f, 1, false, true);
-		}, EaseType.BackInOut, 0f, 1, false, true);
+			Ease3.GoScaleTo(_pauseStatus, Vector3.one, _time, EaseType.BackInOut, 0f, 1, false, true);
+		});
 	}
 	public void Fast()
 	{
@@ -77,15 +77,16 @@ public class TestEase : MonoBehaviour
 		_pauseStatus.color = _colorOff;
 		Time.timeScale = (_fast = !_fast) ? 2f : 1f;
 		_fastStatus.StopAllCoroutines();
-		Ease3.GoColorTo(_fastStatus, (_fast ? _colorOn : _colorOff).GetVector3(), _time, null, null, EaseType.SineInOut, 0f, 1, false, true);
-		Ease3.GoScaleTo(_fastStatus, _scaleTo, _time, null, () =>
+		Ease3.GoColorTo(_fastStatus, (_fast ? _colorOn : _colorOff).GetVector3(), _time, EaseType.SineInOut, 0f, 1, false, true);
+		Ease3.GoScaleTo(_fastStatus, _scaleTo, _time, EaseType.BackInOut, 0f, 1, false, true, complete: () =>
 		{
-			Ease3.GoScaleTo(_fastStatus, Vector3.one, _time, null, null, EaseType.BackInOut, 0f, 1, false, true);
-		}, EaseType.BackInOut, 0f, 1, false, true);
+			Ease3.GoScaleTo(_fastStatus, Vector3.one, _time, EaseType.BackInOut, 0f, 1, false, true);
+		});
 	}
 }
-
 ```
+
+More examples about usage of behaviours in the demo scene.
 
 ## Documentation
 ### Ease
@@ -93,12 +94,13 @@ public class TestEase : MonoBehaviour
 The `Ease` class provides a collection of easing functions and utility methods for creating smooth animations in Unity. Ease either a float, or the alpha value of UI components.
 
 #### Ease.Go
-Initiates a coroutine-based animation with specified parameters.
+Initiates a coroutine-based animation to apply a custom `void update(float interpolatedValue)` function on a given game object.
 
 ```csharp
 IEnumerator Go(MonoBehaviour m, float from, float to, float time,
-    Action<float> update, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    Action<float> update, EaseType type = EaseType.Linear, float delay = 0f,
+    int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action complete = null)
 ```
 
 #### Ease.GoAlpha
@@ -106,8 +108,8 @@ Initiates an alpha animation with specified parameters.
 
 ```csharp
 IEnumerator GoAlpha(MonoBehaviour m, float from, float to, float time,
-    Action<float> update, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<float> update = null, Action complete = null)
 ```
 
 #### Ease.GoAlphaTo
@@ -115,8 +117,8 @@ Initiates an alpha animation to the specified value.
 
 ```csharp
 IEnumerator GoAlphaTo(MonoBehaviour m, float to, float time,
-    Action<float> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<float> update = null, Action complete = null)
 ```
 
 #### Ease.GoAlphaBy
@@ -124,20 +126,21 @@ Initiates an alpha animation by the specified value.
 
 ```csharp
 IEnumerator GoAlphaBy(MonoBehaviour m, float by, float time,
-    Action<float> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<float> update = null, Action complete = null)
 ```
 
 ### Ease3
 The `Ease3` class provides static methods for performing easing animations on Vector3 or transform
 
 #### Ease3.Go
-Starts an easing animation on a `Vector3` property from a starting value to an ending value.
+Starts an easing animation on a `Vector3` property from a starting value to an ending value to apply a custom `void update(float interpolatedValue)` function on a given game object.
 
 ```csharp
 IEnumerator Go(MonoBehaviour m, Vector3 from, Vector3 to, float time,
-    Action<Vector3> update, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    Action<Vector3> update, EaseType type = EaseType.Linear, float delay = 0f,
+    int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action complete = null)
 ```
 
 #### Ease3.GoPosition
@@ -145,8 +148,8 @@ Starts an easing animation on the local position from a starting value to an end
 
 ```csharp
 IEnumerator GoPosition(MonoBehaviour m, Vector3 from, Vector3 to, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoPositionTo
@@ -154,16 +157,16 @@ Starts an easing animation on the local position of a Unity object to a specific
 
 ```csharp
 IEnumerator GoPositionTo(MonoBehaviour m, Vector3 to, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoPositionBy
 Starts an easing animation on the local position of a Unity object by a specific value.
 ```csharp
 IEnumerator GoPositionBy(MonoBehaviour m, Vector3 by, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoRotation
@@ -171,24 +174,24 @@ Starts an easing animation on the local rotation of a Unity object from a starti
 
 ```csharp
 IEnumerator GoRotation(MonoBehaviour m, Vector3 from, Vector3 to, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoRotationTo
 Starts an easing animation on the local rotation of a Unity object to a specific value.
 ```csharp
 IEnumerator GoRotationTo(MonoBehaviour m, Vector3 to, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 #### Ease3.GoRotationBy
 Starts an easing animation on the local rotation of a Unity object by a specific value.
 
 ```csharp
 IEnumerator GoRotationBy(MonoBehaviour m, Vector3 by, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoScale
@@ -196,8 +199,8 @@ Starts an easing animation on the local scale of a Unity object from a starting 
 
 ```csharp
 IEnumerator GoScale(MonoBehaviour m, Vector3 from, Vector3 to, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoScaleTo
@@ -205,16 +208,16 @@ Starts an easing animation on the local scale of a Unity object to a specific va
 
 ```csharp
 IEnumerator GoScaleTo(MonoBehaviour m, Vector3 to, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 #### Ease3.GoScaleBy
 Starts an easing animation on the local scale of a Unity object by a specific value.
 
 ```csharp
 IEnumerator GoScaleBy(MonoBehaviour m, Vector3 by, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoColor
@@ -222,8 +225,8 @@ Starts an easing animation on the color of a Image component or the background c
 
 ```csharp
 IEnumerator GoColor(MonoBehaviour m, Vector3 from, Vector3 to, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoColorTo
@@ -231,8 +234,8 @@ Starts an easing animation on the color of a Image component or the background c
 
 ```csharp
 IEnumerator GoColorTo(MonoBehaviour m, Vector3 to, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 #### Ease3.GoColorBy
@@ -240,20 +243,20 @@ Starts an easing animation on the color of a Image component or the background c
 
 ```csharp
 IEnumerator GoColorBy(MonoBehaviour m, Vector3 by, float time,
-    Action<Vector3> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector3> update = null, Action complete = null)
 ```
 
 ### Ease4
 The `Ease4` class provides static methods for performing easing animations on Vector4 properties, including color animations for Image components and camera backgrounds.
 
 #### Ease4.Go
-Starts an easing animation on a Vector4 property from a starting value to an ending value.
+Starts an easing animation on a Vector4 property from a starting value to an ending value to apply a custom `void update(float interpolatedValue)` function on a given game object.
 
 ```csharp
 IEnumerator Go(MonoBehaviour m, Vector4 from, Vector4 to, float time,
-    Action<Vector4> update, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    Action<Vector4> update, EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1,
+    bool pingPong = false, bool realTime = false, Action complete = null)
 ```
 
 #### Ease4.GoColor
@@ -261,8 +264,8 @@ Starts an easing animation on the color of an Image component or the background 
 
 ```csharp
 IEnumerator GoColor(MonoBehaviour m, Vector4 from, Vector4 to, float time,
-    Action<Vector4> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector4> update = null, Action complete = null)
 ```
 
 #### Ease4.GoColorTo
@@ -270,16 +273,16 @@ Starts an easing animation on the color of an Image component or the background 
 
 ```csharp
 IEnumerator GoColorTo(MonoBehaviour m, Vector4 to, float time,
-    Action<Vector4> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector4> update = null, Action complete = null)
 ```
 #### Ease4.GoColorBy
 Starts an easing animation on the color of an Image component or the background color of the main camera by a specific value.
 
 ```csharp
 IEnumerator GoColorBy(MonoBehaviour m, Vector4 by, float time,
-    Action<Vector4> update = null, Action complete = null, EaseType type = EaseType.Linear,
-    float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false)
+    EaseType type = EaseType.Linear, float delay = 0f, int repeat = 1, bool pingPong = false, bool realTime = false,
+    Action<Vector4> update = null, Action complete = null, )
 ```
 
 ### Extension methods

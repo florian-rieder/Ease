@@ -27,21 +27,21 @@ public class TestEase : MonoBehaviour
 		_fastStatus.color = _colorOff;
 		Time.timeScale = (_slow = !_slow) ? .1f : 1f;
 		_slowStatus.StopAllCoroutines();
-		Ease3.GoColorTo(_slowStatus, (_slow ? _colorOn : _colorOff).GetVector3(), _time, null, null, EaseType.SineInOut, 0f, 1, false, true);
-		Ease3.GoScaleTo(_slowStatus, _scaleTo, _time, null, () =>
+		Ease3.GoColorTo(_slowStatus, (_slow ? _colorOn : _colorOff).GetVector3(), _time, EaseType.SineInOut, 0f, 1, false, true);
+		Ease3.GoScaleTo(_slowStatus, _scaleTo, _time, EaseType.BackInOut, 0f, 1, false, true, complete: () =>
 		{
-			Ease3.GoScaleTo(_slowStatus, Vector3.one, _time, null, null, EaseType.BackInOut, 0f, 1, false, true);
-		}, EaseType.BackInOut, 0f, 1, false, true);
+			Ease3.GoScaleTo(_slowStatus, Vector3.one, _time, EaseType.BackInOut, 0f, 1, false, true);
+		});
 	}
 	public void Pause()
 	{
 		Time.timeScale = (_pause = !_pause) ? 0f : _slow ? .1f : _fast ? 2f : 1f;
 		_pauseStatus.StopAllCoroutines();
-		Ease3.GoColorTo(_pauseStatus, (_pause ? _colorOn : _colorOff).GetVector3(), _time, null, null, EaseType.SineInOut, 0f, 1, false, true);
-		Ease3.GoScaleTo(_pauseStatus, _scaleTo, _time, null, () =>
+		Ease3.GoColorTo(_pauseStatus, (_pause ? _colorOn : _colorOff).GetVector3(), _time, EaseType.SineInOut, 0f, 1, false, true);
+		Ease3.GoScaleTo(_pauseStatus, _scaleTo, _time, EaseType.BackInOut, 0f, 1, false, true, complete: () =>
 		{
-			Ease3.GoScaleTo(_pauseStatus, Vector3.one, _time, null, null, EaseType.BackInOut, 0f, 1, false, true);
-		}, EaseType.BackInOut, 0f, 1, false, true);
+			Ease3.GoScaleTo(_pauseStatus, Vector3.one, _time, EaseType.BackInOut, 0f, 1, false, true);
+		});
 	}
 	public void Fast()
 	{
@@ -51,10 +51,10 @@ public class TestEase : MonoBehaviour
 		_pauseStatus.color = _colorOff;
 		Time.timeScale = (_fast = !_fast) ? 2f : 1f;
 		_fastStatus.StopAllCoroutines();
-		Ease3.GoColorTo(_fastStatus, (_fast ? _colorOn : _colorOff).GetVector3(), _time, null, null, EaseType.SineInOut, 0f, 1, false, true);
-		Ease3.GoScaleTo(_fastStatus, _scaleTo, _time, null, () =>
+		Ease3.GoColorTo(_fastStatus, (_fast ? _colorOn : _colorOff).GetVector3(), _time, EaseType.SineInOut, 0f, 1, false, true);
+		Ease3.GoScaleTo(_fastStatus, _scaleTo, _time, EaseType.BackInOut, 0f, 1, false, true, complete: () =>
 		{
-			Ease3.GoScaleTo(_fastStatus, Vector3.one, _time, null, null, EaseType.BackInOut, 0f, 1, false, true);
-		}, EaseType.BackInOut, 0f, 1, false, true);
+			Ease3.GoScaleTo(_fastStatus, Vector3.one, _time, EaseType.BackInOut, 0f, 1, false, true);
+		});
 	}
 }

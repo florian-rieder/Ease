@@ -6,9 +6,9 @@ namespace ca.HenrySoftware.Rage
 		public override void Go()
 		{
 			if (By)
-				Ease3.GoColorBy(this, Value.GetVector3(), Time, null, Complete.Invoke, Type, Delay, Repeat, PingPong, RealTime);
+				Ease3.GoColorBy(this, Value.GetVector3(), Time, Type, Delay, Repeat, PingPong, RealTime, complete: Complete.Invoke);
 			else
-				Ease3.GoColorTo(this, Value.GetVector3(), Time, null, Complete.Invoke, Type, Delay, Repeat, PingPong, RealTime);
+				Ease3.GoColorTo(this, Value.GetVector3(), Time, Type, Delay, Repeat, PingPong, RealTime, complete: Complete.Invoke);
 		}
 	}
 }
